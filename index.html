@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ProTodo - Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <header class="header">
+      <h1>Pro<span>Todo</span></h1>
+      <div class="theme-switch" id="themeSwitch">
+        <svg id="sunIcon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5V2m0 20v-2.5M4.5 12H2m20 0h-2.5M5.636 5.636l-1.768-1.768M20.132 20.132l-1.768-1.768M5.636 18.364l-1.768 1.768M20.132 3.868l-1.768 1.768M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        <svg id="moonIcon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>
+      </div>
+    </header>
+
+    <section class="input-section">
+      <input type="text" id="taskInput" placeholder="What needs to be done?">
+      <button id="addTaskButton">Add</button>
+    </section>
+
+    <ul id="taskList"></ul>
+
+    <p id="emptyState">✨ No tasks yet. Start by adding one!</p>
+
+    <footer class="footer">
+      <div id="tasksLeft">0 items left</div>
+      <div class="actions">
+        <button id="filterAll" class="active">All</button>
+        <button id="filterActive">Active</button>
+        <button id="filterCompleted">Completed</button>
+      </div>
+      <button id="clearCompleted" class="clear">Clear Completed</button>
+    </footer>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

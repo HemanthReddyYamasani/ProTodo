@@ -1,0 +1,257 @@
+:root {
+    --background: #f9fafb;
+    --foreground: #ffffff;
+    --primary: #4f46e5;
+    --text: #111827;
+    --text-light: #6b7280;
+    --border: #e5e7eb;
+    --shadow: rgba(0, 0, 0, 0.05);
+  }
+  
+  body.dark {
+    --background: #111827;
+    --foreground: #1f2937;
+    --primary: #6366f1;
+    --text: #f9fafb;
+    --text-light: #9ca3af;
+    --border: #374151;
+    --shadow: rgba(255, 255, 255, 0.05);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background: var(--background);
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    min-height: 100vh;
+    transition: all 0.4s ease;
+  }
+  
+  .container {
+    background: var(--foreground);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px var(--shadow);
+    width: 100%;
+    max-width: 500px;
+    animation: fadeIn 1s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+  }
+  
+  h1 span {
+    color: var(--primary);
+  }
+  
+  .theme-switch {
+    width: 44px;
+    height: 44px;
+    background: var(--border);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+    stroke: var(--text);
+    fill: none;
+    stroke-width: 2;
+    position: absolute;
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  
+  #moonIcon {
+    opacity: 0;
+    transform: scale(0);
+  }
+  
+  body.dark #sunIcon {
+    opacity: 0;
+    transform: scale(0);
+  }
+  
+  body.dark #moonIcon {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .input-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  
+  #taskInput {
+    flex: 1;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: var(--foreground);
+    color: var(--text);
+    outline: none;
+    transition: border 0.3s;
+  }
+  
+  #taskInput:focus {
+    border-color: var(--primary);
+  }
+  
+  #addTaskButton {
+    background: var(--primary);
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  #addTaskButton:hover {
+    background: #4338ca;
+  }
+  
+  #taskList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-height: 100px;
+  }
+  
+  .task {
+    background: var(--background);
+    padding: 14px;
+    margin-bottom: 12px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s, border 0.3s;
+    cursor: grab;
+  }
+  
+  .task:active {
+    cursor: grabbing;
+  }
+  
+  .task span {
+    cursor: pointer;
+  }
+  
+  .task.completed span {
+    text-decoration: line-through;
+    color: var(--text-light);
+  }
+  
+  .task button {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+  
+  #emptyState {
+    text-align: center;
+    color: var(--text-light);
+    margin: 30px 0;
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {opacity: 0.6;}
+    50% {opacity: 1;}
+  }
+  
+  .footer {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    gap: 10px;
+  }
+  
+  .footer .actions button {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .footer .actions button.active,
+  .footer .actions button:hover {
+    color: var(--primary);
+  }
+  
+  .footer .clear {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  /* Toast Styles */
+  #toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary);
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.5s;
+    z-index: 999;
+  }
+  
+  #toast.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  
